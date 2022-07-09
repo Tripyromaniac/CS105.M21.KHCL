@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Three.js</title>
+    <style type="text/css">
+         html, body {margin: 0; padding: 0; overflow: hidden}
+
+        #Material-1 {
+            columns: 5;
+            margin: 90px;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 35px;
+            content: box;
+            display: flex;
+            justify-content: space-around;
+            padding: 30px;
+        }
+
+        #Material-2 {
+            columns: 6;
+            margin: 90px;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 35px;
+            content: box;
+            display: flex;
+            justify-content: space-around;
+            padding: 30px;
+            margin-top: -80px;
+        }
+
+        .intro {
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 70px;
+            text-align: center;
+            padding-top: 70px;
+        }
+
+        .head {
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .members {
+            font-family: monospace;
+            font-size: 25px;
+            padding: 20px;
+            margin: 100px;
+            background-color: mintcream;
+            border-radius: 1em;
+            padding-top: 20px;
+            padding-bottom: 5px;
+            margin-top: -100px;
+            
+            
+
+        }
+
+        .name {
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+            list-style-type: none;
+
+
+        }
+
+        .button {
+            font-family: monospace;
+            list-style-type: none;
+
+
+        }
+
+        .geoname {
+            text-align: center;
+            margin-right: 35px;
+            background-color: gray;
+            border-radius: 1em;
+            font-style:italic;
+            font-weight:bold;
+            box-shadow: 6px 6px 5px lavender;
+            width: 300px;
+            height: 200px;
+            padding: 20px;
+            margin-top: -30px;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(./asset/texture/box.jpg);
+            background-size: cover;
+            background-position: center;       
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="webgl"></div>
+    <script src="./build/three.js"></script>
+    <script src="./libs/perlin.js"></script>
+    <script src="./libs/dat.gui.min.js"></script>
+    <script src="./libs/OrbitControls.js"></script>
+    <script src="./libs/GLTFLoader.js"></script>
+    <script src="./other geometries/TeapotGeometry.js"></script>
+    <script src="./other geometries/RoundedBoxGeometry.js "></script>
+    <script src="./main_texture.js"></script>
+
+    <div class="banner">
+        <div class="intro">
+            3D GRAPHIC DEMONSTRATION
+        </div>
+
+
+        <div id="Material-1">
+            <div class="geoname">
+                BOX
+                <div class="button">
+                    <span><button type="button" onclick="init('box', 'point')" style="width: 55%;font-size:20px;">Points</button></span><br>
+                    <span><button type="button" onclick="init('box', 'line')" style="width: 55%;font-size:20px;">Lines</button></span><br>
+                    <span><button type="button" onclick="init('box', 'phong')" style="width: 55%;font-size:20px;">Solid</button></span><br>
+                </div>
+            </div>
+            <div class="geoname">
+                SPHERE<br>
+                <div class="button">
+                    <span><button type="button" onclick="init('sphere', 'point')" style="width: 55%;font-size:20px;">Points</button></span><br>
+                    <span><button type="button" onclick="init('sphere', 'line')" style="width: 55%;font-size:20px;">Lines</button></span><br>
+                    <span><button type="button" onclick="init('sphere', 'phong')" style="width: 55%;font-size:20px;">Solid</button></span><br>
+                </div>
+            </div>
+            <div class="geoname">
+                CONE<br>
+                <div class="button">
+                    <span><button type="button" onclick="init('cone', 'point')" style="width: 55%;font-size:20px;">Points</button></span><br>
+                    <span><button type="button" onclick="init('cone', 'line')" style="width: 55%;font-size:20px;">Lines</button></span><br>
+                    <span><button type="button" onclick="init('cone', 'phong')" style="width: 55%;font-size:20px;">Solid</button></span><br>
+                </div>
+            </div>
+            <div class="geoname">
+                CYLINDER<br>
+                <div class="button">
+                    <span><button type="button" onclick="init('cylinder', 'point')" style="width: 55%;font-size:20px;">Points</button></span><br>
+                    <span><button type="button" onclick="init('cylinder', 'line')" style="width: 55%;font-size:20px;">Lines</button></span><br>
+                    <span><button type="button" onclick="init('cylinder', 'phong')" style="width: 55%;font-size:20px;">Solid</button></span><br>
+                </div>
+            </div>
+            <div class="geoname">
+                WHEEL<br>
+                <div class="button">
+                    <span><button type="button" onclick="init('wheel', 'point')" style="width: 55%;font-size:20px;">Points</button></span><br>
+                    <span><button type="button" onclick="init('wheel', 'line')" style="width: 55%;font-size:20px;">Lines</button></span><br>
+                    <span><button type="button" onclick="init('wheel', 'phong')" style="width: 55%;font-size:20px;">Solid</button></span><br>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div id="Material-2">
+            <div class="geoname">
+                TEAPOT<br>
+                <div class="button">
+                    <span><button type="button" onclick="init('teapot', 'point')" style="width: 55%; font-size:20px;">Points</button></span><br>
+                    <span><button type="button" onclick="init('teapot', 'line')" style="width: 55%; font-size:20px;">Lines</button></span><br>
+                    <span><button type="button" onclick="init('teapot', 'phong')" style="width: 55%;font-size:20px;">Solid</button></span><br>
+                </div>
+            </div>
+            <div class="geoname">
+                ROUNDED BOX<br>
+                <div class="button">
+                    <span><button type="button" onclick="init('roundbox', 'point')" style="width: 55%; font-size:20px;">Points</button></span><br>
+                    <span><button type="button" onclick="init('roundbox', 'line')" style="width: 55%; font-size:20px;">Lines</button></span><br>
+                    <span><button type="button" onclick="init('roundbox', 'phong')" style="width: 55%;font-size:20px;">Solid</button></span><br>
+                </div>
+            </div>
+            <div class="geoname">
+                OTHER GEOS<br>
+                          <div class="button">
+                              <span><button type="button" onclick="init('earth', 'phong')" style="width: 55%; font-size:20px;">Earth</button></span><br>
+                              <span><button type="button" onclick="init('room', 'phong')" style="width: 55%; font-size:20px;">Room</button></span><br>
+                          </div>
+            </div>
+        </div>
+
+
+        <div class="members">
+            <div class="head">THÀNH VIÊN NHÓM</div>
+            <ul class="name">
+                <li>Phạm Minh Trí - 19522390</li>
+                <li>Nguyễn Tường Vy - 19522548</li>
+                <li>Nguyễn Công Thành - 18521407</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html >

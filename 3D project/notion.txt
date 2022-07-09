@@ -1,0 +1,2 @@
+OrbitControls ko tải ở github mà dùng link sau
+https://unpkg.com/three@0.132.0/examples/js/controls/OrbitControls.js

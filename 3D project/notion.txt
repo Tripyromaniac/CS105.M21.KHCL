@@ -1,2 +1,12 @@
 OrbitControls ko tải ở github mà dùng link sau
 https://unpkg.com/three@0.132.0/examples/js/controls/OrbitControls.js
+
+
+
+Các bước để chạy đồ án  :
+B1 :  Download và giải nén thư mục 
+B2 :  Mở cmd và thực hiện lệnh cd đến thư mục đã giải nén 
+B4 :  Sau khi đã cd xong ,thực hiện lệnh python -m http.server 8000
+B5 :  Lưu ý không mở trực tiếp file index.html,
+      mà sử dụng đường link sau để truy cập 
+      http://localhost:8000/index.html
